@@ -1,6 +1,4 @@
-#ifdef __EMSCRIPTEN__
 #include <emscripten.h>
-#endif
 #include <SDL2/SDL.h>
 #include <time.h>
 #include <iostream>
@@ -16,14 +14,10 @@ bool isDone = false;
 
 void main_loop(void *)
 {
+  cout << "Mainloop start" << endl;
   if (!TheGame::Instance()->isRunning())
   {
-#ifdef __EMSCRIPTEN__
     emscripten_cancel_main_loop();
-#else
-    isDone = true;
-#endif
-
     return;
   }
 
@@ -46,13 +40,8 @@ void main_loop(void *)
 	}
 }
 
-#ifdef __EMSCRIPTEN__
 extern "C" int mainf(int argc, char *argv[])
 {
-#else
-int main(int argc, char *argv[])
-{
-#endif
   srand((unsigned)time(nullptr));
 
   cout << "App init attempt..." << endl;
@@ -61,14 +50,8 @@ int main(int argc, char *argv[])
   {
     cout << "App init success!" << endl;
 
-#ifdef __EMSCRIPTEN__
     emscripten_set_main_loop_arg(main_loop, nullptr, -1, 1);
-#else
-    while (!isDone)
-    {
-      main_loop(nullptr);
-    }
-#endif
+
   }
   else
   {

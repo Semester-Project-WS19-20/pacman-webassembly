@@ -5,11 +5,8 @@
 #include <map>
 #include <string>
 #include <SDL2/SDL.h>
-#ifdef __EMSCRIPTEN__
-	#include <SDL/SDL_mixer.h>
-#else
-	#include <SDL2/SDL_mixer.h>
-#endif
+#include <SDL2/SDL_mixer.h>
+
 
 enum sound_type
 {

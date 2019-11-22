@@ -57,7 +57,7 @@
 		const start = function (btn) {
 			btn.style.visibility = 'hidden';
 			document.getElementById('fullScreenButton').style.visibility= 'visible';
-
+			console.log(Module);
 			Module.ccall('mainf', null, null);
 		};
 

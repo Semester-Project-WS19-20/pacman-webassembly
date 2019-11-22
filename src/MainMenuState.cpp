@@ -20,10 +20,8 @@ void MainMenuState::s_menuToPlay()
 void MainMenuState::s_exitFromMenu()
 {
   //cout << this;
-
-#ifndef __EMSCRIPTEN__
+  
   TheGame::Instance()->quit();
-#endif
 }
 
 // end callbacks

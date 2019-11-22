@@ -85,11 +85,9 @@ bool Game::init(string title, int xpos, int ypos, int width, int height, bool fu
 
   SDL_SetRenderDrawColor(m_pRenderer, 0, 0, 0, 255);
 
-#ifndef __EMSCRIPTEN__
   SDL_Surface *icon = SDL_LoadBMP("assets/gfx/icon.bmp");
   SDL_SetWindowIcon(m_pWindow, icon);
   SDL_FreeSurface(icon);
-#endif
   SDL_ShowCursor(SDL_DISABLE);
 
   if (TTF_Init() == -1)
